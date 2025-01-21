@@ -7,7 +7,11 @@ pipeline {
     stages {
         stage("Installing Dependencies") {
             steps {
-                sh 'npm install --no-audit'
+                sh '''
+                     node -v
+                     npm -v
+                     npm install --no-audit
+                    '''
             }
         }
 
@@ -30,7 +34,7 @@ pipeline {
                         ''', 
                         odcInstallation: 'OWASP DepCheck 10'
 
-      
+                        dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true 
                     }
                 }
             }
