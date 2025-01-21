@@ -7,7 +7,11 @@ pipeline {
     stages {
         stage("Installing Dependencies") {
             steps {
-                sh 'npm install --no-audit'
+                sh '''
+                     node -v
+                     npm -v
+                     npm install --no-audit
+                   '''
             }
         }
 
@@ -29,8 +33,7 @@ pipeline {
                             --nvdCveApiKey 6aecb2fd-1f4a-49aa-aa24-c22987a2c366
                         ''', 
                         odcInstallation: 'OWASP DepCheck 10'
-
-      
+                        dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true      
                     }
                 }
             }
