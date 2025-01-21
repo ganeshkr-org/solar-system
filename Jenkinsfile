@@ -27,8 +27,8 @@ pipeline {
                     steps {
                         dependencyCheck additionalArguments: '''
                             --scan \'./\' 
-                            --out \'./\' 
-                            --format \'ALL\' 
+                            --out \'./dependency-check-report.xml\' 
+                            --format \'xml\' 
                             --prettyPrint 
                             --nvdCveApiKey 6aecb2fd-1f4a-49aa-aa24-c22987a2c366
                         ''', 
