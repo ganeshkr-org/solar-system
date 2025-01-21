@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage("Installing Dependencies") {
             steps {
-                sh '''
+                sh  '''
                      node -v
                      npm -v
                      npm install --no-audit
